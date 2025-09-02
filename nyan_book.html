@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>異界の猫 召喚の書</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 古文書風のフォントを設定 */
+        body {
+            font-family: 'Cinzel', serif;
+            background-color: #1a1a1a;
+            background-image: url('https://www.transparenttextures.com/patterns/dark-leather.png');
+        }
+        h1, button, .grimoire-title {
+            font-family: 'Uncial Antiqua', cursive;
+        }
+        /* 魔導書のページのようなデザイン */
+        .grimoire-page {
+            background-color: #fdf5e6; /* Parchment color */
+            border: 4px solid #8B4513; /* SaddleBrown */
+            border-image: linear-gradient(to right, #c0a062, #8B4513) 1;
+            box-shadow: 0 0 20px rgba(0,0,0,0.7), inset 0 0 30px rgba(0,0,0,0.3);
+            color: #4a2c2a;
+        }
+        /* 召喚ボタンの魔法陣と発光エフェクト */
+        #fetch-button {
+            position: relative;
+            background: radial-gradient(circle, #6a0dad 0%, #3a0ca3 100%);
+            border: 2px solid #e0c5ff;
+            text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #c77dff;
+            box-shadow: 0 0 15px #a239ea, inset 0 0 10px #d8b4fe;
+            transition: all 0.3s ease;
+        }
+        #fetch-button:hover {
+            box-shadow: 0 0 30px #a239ea, inset 0 0 15px #d8b4fe, 0 0 5px #fff;
+            transform: scale(1.05) translateY(-2px);
+        }
+        /* カードのフリップアニメーション */
+        .card-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-d;
+        }
+        .is-flipped {
+            transform: rotateY(180deg);
+        }
+        .perspective {
+            perspective: 1000px;
+        }
+        /* 画像の枠 */
+        .image-frame {
+            border: 6px solid;
+            border-image-slice: 1;
+            border-width: 6px;
+            border-image-source: linear-gradient(to bottom, #bda16f, #8B4513);
+            padding: 8px;
+            background-color: #eaddc7;
+        }
+        /* 装飾的な区切り線 */
+        .separator {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #8B4513, transparent);
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="w-full max-w-md mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold text-center text-yellow-200 mb-8" style="text-shadow: 0 0 10px #fca311;">
+            異界の猫 召喚の書
+        </h1>
+        
+        <!-- 魔導書のページ -->
+        <div class="perspective">
+            <div id="profile-card" class="grimoire-page rounded-lg p-6 relative w-full h-[500px]">
+                <div id="card-inner" class="card-inner w-full h-full">
+                    <!-- ローディングスピナー（魔法陣） -->
+                    <div id="loader" class="absolute inset-0 flex flex-col items-center justify-center z-10">
+                        <svg class="animate-spin h-16 w-16 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100">
+                           <path fill="#8a2be2" d="M50 0a50 50 0 0 1 50 50h-8.3A41.7 41.7 0 0 0 50 8.3V0z M14.6 14.6l5.9 5.9A41.5 41.5 0 0 0 8.3 50H0a50 50 0 0 1 14.6-35.4z M50 100a50 50 0 0 1-50-50h8.3A41.7 41.7 0 0 0 50 91.7V100z M85.4 85.4l-5.9-5.9A41.5 41.5 0 0 0 91.7 50h8.3a50 50 0 0 1-14.6 35.4z M50 25a25 25 0 1 0 0 50 25 25 0 0 0 0-50z m0 8.3a16.7 16.7 0 1 1 0 33.4 16.7 16.7 0 0 1 0-33.4z"></path>
+                        </svg>
+                        <p class="mt-4 text-lg font-bold">召喚中...</p>
+                    </div>
+                    
+                    <!-- 召喚結果表示エリア -->
+                    <div id="content-area" class="opacity-0 transition-opacity duration-500 w-full h-full flex flex-col text-center">
+                        <h2 class="text-xl grimoire-title font-bold tracking-widest">--- 召喚獣 ---</h2>
+                        <!-- 使い魔（猫）の情報 -->
+                        <div class="relative my-4 image-frame">
+                            <img id="cat-image" src="https://placehold.co/400x300/fdf5e6/4a2c2a?text=..." alt="召喚された使い魔" class="w-full h-48 object-cover">
+                        </div>
+                        <p class="text-lg">真名: <span id="cat-truename" class="font-bold"></span></p>
+
+                        <div class="separator"></div>
+
+                        <h2 class="text-xl grimoire-title font-bold tracking-widest">--- 召喚主 ---</h2>
+                        <!-- 召喚主（人）の情報 -->
+                        <div class="mt-2">
+                            <h3 id="user-name" class="text-2xl font-bold"></h3>
+                            <p id="user-info" class="text-sm mt-1"></p>
+                        </div>
+                    </div>
+
+                     <!-- エラーメッセージ -->
+                    <div id="error-message" class="hidden text-center text-red-700 p-4">
+                        <p class="font-bold text-lg">召喚に失敗しました</p>
+                        <p>魔力の流れが不安定です。時間をおいて再度お試しください。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 召喚ボタン -->
+        <div class="mt-8 text-center">
+            <button id="fetch-button" class="text-white font-bold py-4 px-10 rounded-lg text-xl shadow-lg transition-transform transform focus:outline-none">
+                召喚術を詠唱
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // DOM要素の取得
+        const cardInner = document.getElementById('card-inner');
+        const catImage = document.getElementById('cat-image');
+        const catTrueName = document.getElementById('cat-truename');
+        const userName = document.getElementById('user-name');
+        const userInfo = document.getElementById('user-info');
+        const fetchButton = document.getElementById('fetch-button');
+        const loader = document.getElementById('loader');
+        const contentArea = document.getElementById('content-area');
+        const errorMessage = document.getElementById('error-message');
+
+        // 使い魔の「真名」リスト
+        const trueNames = ['月の幻影', '深淵の歩行者', '炎の悪戯', '静寂の守り手', '時の旅人', '星屑の収集家', '影の舞手', '夢の紡ぎ手'];
+
+        // APIからデータを取得し、表示を更新するメインの関数
+        async function fetchCatAndUser() {
+            contentArea.style.opacity = '0';
+            errorMessage.classList.add('hidden');
+            fetchButton.disabled = true;
+            cardInner.classList.add('is-flipped');
+            
+            await new Promise(resolve => setTimeout(resolve, 400));
+            loader.style.display = 'flex';
+
+            try {
+                const [catResponse, userResponse] = await Promise.all([
+                    fetch('https://api.thecatapi.com/v1/images/search'),
+                    fetch('https://randomuser.me/api/?nat=jp,us,gb,fr,de')
+                ]);
+
+                if (!catResponse.ok || !userResponse.ok) {
+                    throw new Error('API request failed');
+                }
+
+                const [catData, userData] = await Promise.all([
+                    catResponse.json(),
+                    userResponse.json()
+                ]);
+
+                updateProfile(catData[0], userData.results[0]);
+
+            } catch (error) {
+                console.error('データの取得に失敗しました:', error);
+                errorMessage.classList.remove('hidden');
+            } finally {
+                loader.style.display = 'none';
+                cardInner.classList.remove('is-flipped');
+                await new Promise(resolve => setTimeout(resolve, 200));
+                contentArea.style.opacity = '1';
+                fetchButton.disabled = false;
+            }
+        }
+
+        // 取得したデータをもとに魔導書のページを更新する関数
+        function updateProfile(cat, user) {
+            // 使い魔の情報を設定
+            catImage.src = cat.url;
+            const randomTrueName = trueNames[Math.floor(Math.random() * trueNames.length)];
+            catTrueName.textContent = randomTrueName;
+
+            // 召喚主の情報を設定
+            userName.textContent = `${user.name.last} ${user.name.first}`;
+            userInfo.textContent = `縁の地: ${user.location.city}, 年齢: ${user.dob.age}`;
+        }
+
+        // ボタンのクリックイベント
+        fetchButton.addEventListener('click', fetchCatAndUser);
+
+        // ページ読み込み時に最初の召喚を行う
+        window.addEventListener('load', () => {
+            loader.style.display = 'flex';
+            fetchCatAndUser().then(() => {
+                cardInner.classList.remove('is-flipped');
+                contentArea.style.opacity = '1';
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+

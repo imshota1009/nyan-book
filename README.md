@@ -18,7 +18,7 @@
 
 ## 📖 この魔導書について (About This Grimoire)
 
-ここから遊べます⇒
+ここから遊べます⇒https://imshota1009.github.io/nyan-book/
 
 `Grimoire of Feline Summoning`は、古代の召喚術を現代のウェブ技術で再現した神秘的なアプリケーションです。
 

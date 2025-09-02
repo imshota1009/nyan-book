@@ -17,6 +17,8 @@
 
 ## 📖 この魔導書について (About This Grimoire)
 
+ここから遊べます⇒
+
 `Grimoire of Feline Summoning`は、古代の召喚術を現代のウェブ技術で再現した神秘的なアプリケーションです。
 
 この書は二つの強力な魔術的API、「猫の領域 (`The Cat API`)」と「人の運命 (`Random User Generator API`)」から力を引き出します。詠唱（ボタンクリック）を行うたびに、ページがめくれるようにアニメーションし、新たに召喚された使い魔（猫）とその召喚主（人）の組み合わせが運命的に結びつけられ、表示されます。
@@ -40,28 +42,6 @@
   <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS">
 </p>
 
-## 🚀 召喚術の準備 (Getting Started)
-
-この魔導書の力をあなたの領域で解放するには、以下の手順に従ってください。
-
-1.  **魔導書の写本を作成 (Clone the repository):**
-    ```sh
-    git clone [https://github.com/YOUR_USERNAME/grimoire-cat-summoner.git](https://github.com/YOUR_USERNAME/grimoire-cat-summoner.git)
-    ```
-2.  **聖域へ移動 (Navigate to the directory):**
-    ```sh
-    cd grimoire-cat-summoner
-    ```
-3.  **儀式の開始 (Open in browser):**
-    `grimoire_cat_summoner.html` ファイルをブラウザで開くと、召喚の儀式が開始されます。
-
-**⚠️重要:** 儀式を正しく執り行うには、魔導書本体 (`.html`) と共に以下の**触媒**が同じ階層に存在する必要があります。
-* `dino_player.png` （※もし使う場合）
-* `merchant1.png` （※もし使う場合）
-
-（このプロジェクトは単一ファイル構成なので、触媒は不要です。もし画像などを外部ファイル化する場合は、ここに記載してください。）
-
-***
 
 <div align="center">
   <p>この魔導書が、あなたに素晴らしい出会いをもたらしますように。</p>

@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-  <img src="https/placehold.co/700x350/1a1a1a/fdf5e6?text=Summoning+a+Familiar" alt="nyan_screenshot.png">
+  <img src="images/nyan_screenshot.png" alt="ゲームプレイのスクリーンショット">
 </div>
 
 

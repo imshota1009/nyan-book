@@ -5,9 +5,9 @@
 
 </div>
 
-<div align="center">
+
   ![アプリのスクリーンショット](./images/nyan_screenshot.png)
-</div>
+
 
 <p align="center">
   <i>"このデジタルな魔導書のページをめくり、<br>異界より猫の使い魔を現世へと呼び覚まさん──"</i>

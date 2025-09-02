@@ -32,6 +32,29 @@
 * **✨ 魔法陣と発光 (Magic Circle & Glow):** 「召喚」ボタンは魔法陣のように輝き、詠唱の瞬間をドラマチックに演出します。
 * **🔗 異界との接続 (Ethereal Connection):** 二つの外部APIを同時に呼び出し、その結果を一つの召喚結果として統合する高度な魔術回路を実装しています。
 
+## 🚀 召喚術の準備 (Getting Started)
+
+この魔導書の力をあなたの領域で解放するには、以下の手順に従ってください。
+
+1.  **魔導書の写本を作成 (Clone the repository):**
+    ```sh
+    git clone [https://github.com/YOUR_USERNAME/grimoire-cat-summoner.git](https://github.com/YOUR_USERNAME/grimoire-cat-summoner.git)
+    ```
+2.  **聖域へ移動 (Navigate to the directory):**
+    ```sh
+    cd grimoire-cat-summoner
+    ```
+3.  **儀式の開始 (Open in browser):**
+    `grimoire_cat_summoner.html` ファイルをブラウザで開くと、召喚の儀式が開始されます。
+
+**⚠️重要:** 儀式を正しく執り行うには、魔導書本体 (`.html`) と共に以下の**触媒**が同じ階層に存在する必要があります。
+* `dino_player.png` （※もし使う場合）
+* `merchant1.png` （※もし使う場合）
+
+（このプロジェクトは単一ファイル構成なので、触媒は不要です。もし画像などを外部ファイル化する場合は、ここに記載してください。）
+
+***
+
 ## 🛠️ 儀式に用いられし術式 (Technologies Used)
 
 この魔導書は、以下の古代文字と術式によって構成されています。

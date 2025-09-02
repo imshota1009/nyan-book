@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-  <img src="https/placehold.co/700x350/1a1a1a/fdf5e6?text=Summoning+a+Familiar" alt="./images/nyan_screenshot.png">
+  <img src="https/placehold.co/700x350/1a1a1a/fdf5e6?text=Summoning+a+Familiar" alt="nyan_screenshot.png">
 </div>
 
 

@@ -6,7 +6,7 @@
 </div>
 
 <div align="center">
-  <img src="images/nyan_screenshot.png" alt="ゲームプレイのスクリーンショット">
+  <img src="images/nyan_screenshot.jpg" alt="ゲームプレイのスクリーンショット">
 </div>
 
 
